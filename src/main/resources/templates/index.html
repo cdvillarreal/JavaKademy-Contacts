@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<title>Contactos</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Contactos</h1>
+			<a th:href="@{/nuevo}" class="btn btn-primary mt-2">Nuevo contacto</a>
+			<table class="table table-hover align-middle mt-4">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombres</th>
+						<th>Apellido</th>
+						<th>E-mail</th>
+						<th>Teléfono</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<tr th:each="contact:${contacts}">
+						<td th:text="${contact.id}"></td>
+						<td th:text="${contact.name}"></td>
+						<td th:text="${contact.lastname}"></td>
+						<td th:text="${contact.email}"></td>
+						<td th:text="${contact.telephone}"></td>
+						<td>
+							<a th:href="@{/editar/}+${contact.id}" class="btn btn-success">Editar</a>
+							<a th:href="@{/eliminar/}+${contact.id}" class="btn btn-danger">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+				<caption>Proyecto final para la capacitación JavaKademy.</caption>
+			</table>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	</body>
+</html>
